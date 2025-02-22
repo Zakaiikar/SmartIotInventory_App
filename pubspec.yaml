@@ -1,11 +1,7 @@
 name: smartinventory
 description: "A new Flutter project."
 
-# Prevent accidental publishing to pub.dev
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-# Define the version and build number for your application.
-# Follow semantic versioning: MAJOR.MINOR.PATCH+BUILD
 version: 1.0.0+1
 
 environment:
@@ -14,37 +10,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # Cupertino Icons for iOS style icons
   cupertino_icons: ^1.0.8
   firebase_core: ^3.11.0
   firebase_auth: ^5.4.2
   cloud_firestore: ^5.6.3
   random_string: ^2.3.1
+  charts_flutter: ^0.12.0  # Downgrade to this version
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # Recommended lints for better coding practices
   flutter_lints: ^5.0.0
 
-# Flutter specific settings
 flutter:
   uses-material-design: true
-
-  # Specify asset directories
   assets:
     - image/
-    # - images/a_dot_ham.jpeg # Example of a specific asset
-
-  # Uncomment to add custom fonts
-  # fonts:
-  #   - family: Raleway
-  #     fonts:
-  #       - asset: fonts/Raleway-Regular.ttf
-  #       - asset: fonts/Raleway-Italic.ttf
-  #         style: italic
-
-# For more information, visit:
-# https://dart.dev/tools/pub/pubspec

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:smartinventory/pages/Login.dart';
 import 'package:smartinventory/pages/SignUp.dart';
+import 'package:smartinventory/pages/category.dart';
+import 'package:smartinventory/pages/product.dart';
 import 'firebase_options.dart'; // Ensure this path is correct
 
 void main() async {
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Signup(), // Set Signup as the home screen
+      home: Login(), // Set Signup as the home screen
     );
   }
 }
