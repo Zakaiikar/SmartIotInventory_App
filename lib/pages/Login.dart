@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smartinventory/pages/SignUp.dart';
 import 'package:smartinventory/pages/Dashboard.dart'; // Import your Dashboard page
 import 'package:smartinventory/pages/passswordforgot.dart'; // Import ForgotPassword page
 
@@ -23,7 +22,7 @@ class _LoginState extends State<Login> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
-        
+
         // Navigate to Dashboard after successful login
         Navigator.pushReplacement(
           context,
@@ -74,7 +73,7 @@ class _LoginState extends State<Login> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 100,),
+                  SizedBox(height: 100),
                   Text(
                     "Welcome! ",
                     style: TextStyle(
@@ -113,53 +112,24 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(height: 24),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Signup()));
-                        },
-                        child: Container(
-                          width: 120,
-                          padding: EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(18)),
-                          child: Center(
-                            child: Text(
-                              "Sign Up",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
+                  GestureDetector(
+                    onTap: login, // Call login function on tap
+                    child: Container(
+                      width: double.infinity, // Make the button full width
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(18)),
+                      child: Center(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: Color(0xff14141d),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(width: 90),
-                      GestureDetector(
-                        onTap: login, // Call login function on tap
-                        child: Container(
-                          width: 120,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(18)),
-                          child: Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Color(0xff14141d),
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),

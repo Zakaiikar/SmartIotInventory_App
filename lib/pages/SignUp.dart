@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smartinventory/pages/Login.dart';
+import 'package:smartinventory/pages/Dashboard.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -25,11 +25,11 @@ class _SignupState extends State<Signup> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-        
-        // Navigate to Login after successful registration
+
+        // Navigate to Dashboard after successful registration
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Login()),
+          MaterialPageRoute(builder: (context) => Dashboard()),
         );
       } on FirebaseAuthException catch (e) {
         String message;
@@ -73,10 +73,9 @@ class _SignupState extends State<Signup> {
       body: Stack(
         children: [
           // Background image
-
           Image.asset(
             "image/signup.jpeg",
-            fit: BoxFit.cover, // Make the image fill the screen
+            fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
           ),
@@ -87,7 +86,28 @@ class _SignupState extends State<Signup> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 100,),
+                  // Back to Dashboard button
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Dashboard()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   Text(
                     "Sign Up",
                     style: TextStyle(
@@ -109,48 +129,22 @@ class _SignupState extends State<Signup> {
                         width: 120,
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            gradient: LinearGradient(
+                              colors: [Colors.blue, Colors.purple],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
                             borderRadius: BorderRadius.circular(18)),
                         child: Center(
                           child: Text(
                             "Sign Up",
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already Have An Account?",
-                          style: TextStyle(
-                              color: const Color.fromARGB(255, 226, 176, 176),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Login()));
-                          },
-                          child: Text(
-                            " Login?",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ],
